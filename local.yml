@@ -38,14 +38,16 @@
       value: "['caps:ctrl_modifier']"
 
   - name: enable night light
+    become_user: stefanpeng
     dconf:
       key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
       value: "true"
 
   - name: enable rgb antialiasing
+    become_user: stefanpeng
     dconf:
       key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
-      value: "'RGB'"
+      value: "'rgba'"
 
   - name: copy .bashrc file
     copy:
