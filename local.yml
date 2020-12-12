@@ -39,7 +39,7 @@
 
   - name: enable night light
     dconf:
-      key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
+      key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
       value: true
 
   - name: copy .bashrc file
