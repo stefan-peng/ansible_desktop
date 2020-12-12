@@ -12,11 +12,11 @@
         - vim-nox
 
   - name: copy wallpaper file
-      copy:
-        src: files/wallpaper.jpg
-        dest: /usr/share/backgrounds/ansible-wallpaper.jpg
-        owner: root
-        group: root
+    copy:
+      src: files/wallpaper.jpg
+      dest: /usr/share/backgrounds/ansible-wallpaper.jpg
+      owner: root
+      group: root
 
   - name: set wallpaper
     become_user: stefanpeng
