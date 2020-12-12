@@ -31,6 +31,12 @@
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
 
+  - name: use caps lock as ctrl
+    become_user: stefanpeng
+    dconf:
+      key: "/org/gnome/desktop/input-sources/xkb-options"
+      value: "['caps:ctrl_modifier']"
+
   - name: copy .bashrc file
     copy:
       src: files/bashrc
