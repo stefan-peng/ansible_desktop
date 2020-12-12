@@ -37,3 +37,23 @@
       dest: /home/stefanpeng/.bashrc
       owner: stefanpeng
       group: stefanpeng
+
+  - name: add ansible user
+    user:
+      name: ansie
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_ansie
+      dest: /etc/sudoers.d/ansie
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: ansie
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/stefan-peng/ansible_desktop_tutorial.git
