@@ -37,10 +37,22 @@
       key: "/org/gnome/desktop/input-sources/xkb-options"
       value: "['caps:ctrl_modifier']"
 
+  - name: enable night light
+    dconf:
+      key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
+      value: true
+
   - name: copy .bashrc file
     copy:
       src: files/bashrc
       dest: /home/stefanpeng/.bashrc
+      owner: stefanpeng
+      group: stefanpeng
+
+  - name: copy .vimrc file
+    copy:
+      src: files/vimrc
+      dest: /home/stefanpeng/.vimrc
       owner: stefanpeng
       group: stefanpeng
 
