@@ -56,4 +56,4 @@
       name: ansible auto-provision
       user: ansie
       minute: "*/10"
-      job: ansible-pull -o -U https://github.com/stefan-peng/ansible_desktop_tutorial.git
+      job: ansible-pull -o -U https://github.com/stefan-peng/ansible_desktop.git
