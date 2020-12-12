@@ -44,7 +44,7 @@
 
   - name: enable rgb antialiasing
     dconf:
-      key: "org/gnome/settings-daemon/plugins/xsettings/antialiasing"
+      key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
       value: "'RGB'"
 
   - name: copy .bashrc file
