@@ -11,6 +11,38 @@
         - tmux
         - vim-nox
         - python3-psutil
+        - imagej
+
+  - name: add onedrive/abraunegg repository
+    apt_repository:
+      repo: ppa:yann1ck/onedrive
+
+  - name: install onedrive
+    package:
+      name:
+        - onedrive
+
+  - name: enable onedrive service
+    systemd:
+      name: onedrive@stefanpeng
+      enabled: yes
+      state: started
+
+  - name: enable flathub repository
+    become: yes
+    command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  - name: install spotify
+    become: yes
+    command: flatpak install --assumeyes flathub com.spotify.Client
+
+  - name: install emacs
+    become: yes
+    command: flatpak install --assumeyes flathub org.gnu.emacs
+
+  - name: install mendeley
+    become: yes
+    command: flatpak install --assumeyes flathub com.elsevier.MendeleyDesktop
 
   - name: copy wallpaper file
     copy:
