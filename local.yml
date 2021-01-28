@@ -12,6 +12,20 @@
         - vim-nox
         - python3-psutil
         - imagej
+        - syncthing
+        - discord
+        - slack-desktop
+        - code
+        - youtube-dl
+        - mpv
+        - anki
+        - gnome-tweaks
+
+  - name: enable syncthing service
+    systemd:
+      name: syncthing@stefanpeng.service
+      state: started
+      enabled: True
 
   - name: enable flathub repository
     become: yes
@@ -24,6 +38,14 @@
   - name: install mendeley
     become: yes
     command: flatpak install --assumeyes flathub com.elsevier.MendeleyDesktop
+
+  - name: install obsidian
+    become: yes
+    command: flatpak install --assumeyes flathub md.obsidian.obsidian
+
+  - name: install zoom
+    become: yes
+    command: flatpak install --assumeyes flathub us.zoom.Zoom
 
   - name: copy wallpaper file
     copy:
