@@ -11,7 +11,6 @@
         - tmux
         - vim-nox
         - python3-psutil
-        - imagej
         - syncthing
         - discord
         - slack-desktop
@@ -20,9 +19,6 @@
         - mpv
         - anki
         - gnome-tweaks
-        - lutris
-        - homebank
-        - gnome-music
 
   - name: enable syncthing service
     systemd:
@@ -53,10 +49,6 @@
   - name: install dejadup
     become: yes
     command: flatpak install --assumeyes flathub org.gnome.DejaDup
-
-  - name: install teams
-    become: yes
-    command: flatpak install --assumeyes flathub com.microsoft.Teams
 
   - name: copy wallpaper file
     copy:
