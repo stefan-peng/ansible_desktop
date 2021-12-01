@@ -26,7 +26,7 @@
 
   - name: enable syncthing service
     systemd:
-      name: syncthing@stefanpeng.service
+      name: syncthing@speng.service
       state: started
       enabled: True
 
@@ -66,31 +66,31 @@
       group: root
 
   - name: set wallpaper
-    become_user: stefanpeng
+    become_user: speng
     dconf:
       key: "/org/gnome/desktop/background/picture-uri"
       value: "'file:///usr/share/backgrounds/ansible-wallpaper.jpg'"
 
   - name: set wallpaper position
-    become_user: stefanpeng
+    become_user: speng
     dconf:
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
 
   - name: use caps lock as ctrl
-    become_user: stefanpeng
+    become_user: speng
     dconf:
       key: "/org/gnome/desktop/input-sources/xkb-options"
       value: "['caps:ctrl_modifier']"
 
   - name: enable night light
-    become_user: stefanpeng
+    become_user: speng
     dconf:
       key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
       value: "true"
 
   - name: enable rgb antialiasing
-    become_user: stefanpeng
+    become_user: speng
     dconf:
       key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
       value: "'rgba'"
@@ -98,16 +98,16 @@
   - name: copy .bashrc file
     copy:
       src: files/bashrc
-      dest: /home/stefanpeng/.bashrc
-      owner: stefanpeng
-      group: stefanpeng
+      dest: /home/speng/.bashrc
+      owner: speng
+      group: speng
 
   - name: copy .vimrc file
     copy:
       src: files/vimrc
-      dest: /home/stefanpeng/.vimrc
-      owner: stefanpeng
-      group: stefanpeng
+      dest: /home/speng/.vimrc
+      owner: speng
+      group: speng
 
   - name: add ansible user
     user:
