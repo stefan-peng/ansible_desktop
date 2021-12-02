@@ -4,9 +4,16 @@
   become: true
 
   tasks:
+  - name: add ulauncher repo
+    apt_repository:
+      repo: 'ppa:agornostal/ulauncher'
+      state: present
+      update-cache: yes
+
   - name: install packages
     package:
       name:
+        - ulauncher
         - htop
         - tmux
         - vim-nox
@@ -19,6 +26,7 @@
         - mpv
         - anki
         - gnome-tweaks
+        - evolution
 
   - name: enable syncthing service
     systemd:
