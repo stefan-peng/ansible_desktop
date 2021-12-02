@@ -4,6 +4,12 @@
   become: true
 
   tasks:
+  - name: add guayadeque repo
+    apt_repository:
+      repo: 'ppa:anonbeat/guayadeque'
+      state: present
+      update-cache: yes
+
   - name: add ulauncher repo
     apt_repository:
       repo: 'ppa:agornostal/ulauncher'
@@ -13,6 +19,7 @@
   - name: install packages
     package:
       name:
+        - guayadeque
         - ulauncher
         - htop
         - tmux
