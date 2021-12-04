@@ -4,36 +4,20 @@
   become: true
 
   tasks:
-  - name: add guayadeque repo
-    apt_repository:
-      repo: 'ppa:anonbeat/guayadeque'
-      state: present
-      update-cache: yes
-
-  - name: add ulauncher repo
-    apt_repository:
-      repo: 'ppa:agornostal/ulauncher'
-      state: present
-      update-cache: yes
 
   - name: install packages
     package:
       name:
-        - guayadeque
-        - ulauncher
+        - gdb
+        - valgrind
         - htop
         - tmux
         - vim-nox
         - python3-psutil
         - syncthing
-        - discord
-        - slack-desktop
         - code
-        - youtube-dl
-        - mpv
-        - anki
         - gnome-tweaks
-        - evolution
+        - snapd
 
   - name: enable syncthing service
     systemd:
@@ -41,29 +25,13 @@
       state: started
       enabled: True
 
+  - name: install bitwarden
+    snap:
+      name: bitwarden
+
   - name: enable flathub repository
     become: yes
     command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-  - name: install spotify
-    become: yes
-    command: flatpak install --assumeyes flathub com.spotify.Client
-
-  - name: install mendeley
-    become: yes
-    command: flatpak install --assumeyes flathub com.elsevier.MendeleyDesktop
-
-  - name: install obsidian
-    become: yes
-    command: flatpak install --assumeyes flathub md.obsidian.obsidian
-
-  - name: install zoom
-    become: yes
-    command: flatpak install --assumeyes flathub us.zoom.Zoom
-
-  - name: install dejadup
-    become: yes
-    command: flatpak install --assumeyes flathub org.gnome.DejaDup
 
   - name: copy wallpaper file
     copy:
