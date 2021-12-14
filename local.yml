@@ -29,6 +29,13 @@
     become: yes
     command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+  - name: enable MOZ_USE_XINPUT2
+    copy:
+      src: files/use-xinput2.sh
+      dest: /etc/profile.d/use-xinput2.sh
+      owner: root
+      group: root
+
   - name: copy wallpaper file
     copy:
       src: files/wallpaper.jpg
