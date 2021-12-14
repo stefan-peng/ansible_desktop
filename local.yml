@@ -17,7 +17,7 @@
         - syncthing
         - picom
         - thunderbird
-#         - gnome-tweaks
+        - gnome-tweaks
 
   - name: enable syncthing service
     systemd:
@@ -25,46 +25,46 @@
       state: started
       enabled: True
 
-#   - name: enable flathub repository
-#     become: yes
-#     command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  - name: enable flathub repository
+    become: yes
+    command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-#   - name: copy wallpaper file
-#     copy:
-#       src: files/wallpaper.jpg
-#       dest: /usr/share/backgrounds/ansible-wallpaper.jpg
-#       owner: root
-#       group: root
+  - name: copy wallpaper file
+    copy:
+      src: files/wallpaper.jpg
+      dest: /usr/share/backgrounds/ansible-wallpaper.jpg
+      owner: root
+      group: root
 
-#   - name: set wallpaper
-#     become_user: speng
-#     dconf:
-#       key: "/org/gnome/desktop/background/picture-uri"
-#       value: "'file:///usr/share/backgrounds/ansible-wallpaper.jpg'"
+  - name: set wallpaper
+    become_user: speng
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/ansible-wallpaper.jpg'"
 
-#   - name: set wallpaper position
-#     become_user: speng
-#     dconf:
-#       key: "/org/gnome/desktop/background/picture-options"
-#       value: "'zoom'"
+  - name: set wallpaper position
+    become_user: speng
+    dconf:
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
 
-#   - name: use caps lock as ctrl
-#     become_user: speng
-#     dconf:
-#       key: "/org/gnome/desktop/input-sources/xkb-options"
-#       value: "['caps:ctrl_modifier']"
+  - name: use caps lock as ctrl
+    become_user: speng
+    dconf:
+      key: "/org/gnome/desktop/input-sources/xkb-options"
+      value: "['caps:ctrl_modifier']"
 
-#   - name: enable night light
-#     become_user: speng
-#     dconf:
-#       key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
-#       value: "true"
+  - name: enable night light
+    become_user: speng
+    dconf:
+      key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+      value: "true"
 
-#   - name: enable rgb antialiasing
-#     become_user: speng
-#     dconf:
-#       key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
-#       value: "'rgba'"
+  - name: enable rgb antialiasing
+    become_user: speng
+    dconf:
+      key: "/org/gnome/settings-daemon/plugins/xsettings/antialiasing"
+      value: "'rgba'"
 
   - name: copy .bashrc file
     copy:
