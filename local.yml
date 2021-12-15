@@ -5,9 +5,16 @@
 
   tasks:
 
+  - name: add guayadeque repo
+    apt_repository:
+      repo: 'ppa:anonbeat/guayadeque'
+      state: present
+      update-cache: yes
+
   - name: install packages
     package:
       name:
+        - guayadeque
         - gdb
         - valgrind
         - htop
