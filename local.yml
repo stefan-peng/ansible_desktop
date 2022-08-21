@@ -85,6 +85,13 @@
       owner: speng
       group: speng
 
+  - name: copy .gitconfig file
+    copy:
+      src: files/gitconfig
+      dest: /home/speng/.gitconfig
+      owner: spng
+      group: speng
+
   - name: add ansible user
     user:
       name: ansie
