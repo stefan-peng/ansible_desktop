@@ -5,32 +5,17 @@
 
   tasks:
 
-  - name: add guayadeque repo
-    apt_repository:
-      repo: 'ppa:anonbeat/guayadeque'
-      state: present
-      update-cache: yes
-
   - name: install packages
     package:
       name:
-        - guayadeque
         - gdb
         - valgrind
         - htop
         - tmux
         - vim-nox
         - python3-psutil
-        - syncthing
-        - picom
         - thunderbird
         - gnome-tweaks
-
-  - name: enable syncthing service
-    systemd:
-      name: syncthing@speng.service
-      state: started
-      enabled: True
 
   - name: enable flathub repository
     become: yes
