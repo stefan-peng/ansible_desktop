@@ -30,6 +30,8 @@
         - mpv
         - yt-dlp
         - ani-cli
+        - newsboat
+        - neofetch
 
 
   - name: enable flathub repository
