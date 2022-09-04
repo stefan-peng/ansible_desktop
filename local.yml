@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-
+      
   - name: install packages
     package:
       name:
@@ -16,10 +16,29 @@
         - python3-psutil
         - thunderbird
         - gnome-tweaks
+        - mpv
+        - yt-dlp
+
 
   - name: enable flathub repository
     become: yes
     command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  - name: install steam
+    become: yes
+    command: flatpak install --assumeyes flathub com.valvesoftware.Steam
+
+  - name: install lutris
+    become: yes
+    command: flatpak install --assumeyes flathub net.lutris.Lutris
+
+  - name: install lollypop
+    become: yes
+    command: flatpak install --assumeyes flathub org.gnome.Lollypop
+
+  - name: install foliate
+    become: yes
+    command: flatpak install --assumeyes flathub com.github.johnfactotum.Foliate
 
   - name: enable MOZ_USE_XINPUT2
     copy:
@@ -89,9 +108,14 @@
     copy:
       src: files/gitconfig
       dest: /home/speng/.gitconfig
-      owner: spng
+      owner: speng
       group: speng
 
+  - name: copy mpv config
+    synchronize:
+      src: files/mpv/
+      dest: /home/speng/.config/mpv/
+      
   - name: add ansible user
     user:
       name: ansie
