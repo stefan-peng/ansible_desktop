@@ -1,0 +1,45 @@
+#!/bin/sh
+main () {
+    # execute function based on command line arguments
+    case ${1:-auto} in
+        in*)    internal ;;
+        ex*)    external ;;
+        auto)   auto     ;;
+        *)      usage ;;
+    esac
+}
+
+usage () {
+    (>&2 echo "
+    Usage:
+
+    $SCRIPTNAME [mode]
+
+    where [mode] is one of:
+    internal
+    external
+    auto
+    ")
+}
+
+auto () {
+    xrandr --auto
+}
+
+# ----------------------------------------------------------------------
+# Display mode functions
+# ----------------------------------------------------------------------
+
+internal () {
+    xrandr --output eDP1 --auto --primary --output HDMI2 --off
+    xrdb -merge "$HOME"/.Xresources-hidpi
+}
+
+external () {
+    xrandr --output eDP1 --off --output HDMI2 --auto --primary
+    xrdb -merge "$HOME"/.Xresources-lodpi
+}
+
+main "$*"
+
+# vim: ft=sh:expandtab:ts=4:shiftwidth=4

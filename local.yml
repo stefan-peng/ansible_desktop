@@ -109,6 +109,13 @@
       owner: speng
       group: speng
 
+  - name: copy .bash_aliases file
+    copy:
+      src: files/bash_aliases
+      dest: /home/speng/.bash_aliases
+      owner: speng
+      group: speng
+
   - name: copy .vimrc file
     copy:
       src: files/vimrc
@@ -127,6 +134,11 @@
     synchronize:
       src: files/mpv/
       dest: /home/speng/.config/mpv/
+
+  - name: copy bin
+    synchronize:
+      src: files/bin/
+      dest: /home/speng/bin/
       
   - name: add ansible user
     user:
