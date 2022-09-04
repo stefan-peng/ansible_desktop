@@ -4,7 +4,18 @@
   become: true
 
   tasks:
-      
+
+  - name: add ani-cli key
+    apt_key:
+      url: https://Wiener234.github.io/ani-cli-ppa/KEY.gpg
+      state: present
+
+  - name: add ani-cli ppa
+    apt_repository:
+      repo: deb https://Wiener234.github.io/ani-cli-ppa ./
+      state: present
+      filename: ani-cli
+
   - name: install packages
     package:
       name:
@@ -18,6 +29,7 @@
         - gnome-tweaks
         - mpv
         - yt-dlp
+        - ani-cli
 
 
   - name: enable flathub repository
