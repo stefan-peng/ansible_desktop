@@ -135,6 +135,11 @@
       src: files/mpv/
       dest: /home/speng/.config/mpv/
 
+  - name: copy newsboat config
+    synchronize:
+      src: files/newsboat/
+      dest: /home/speng/.newsboat/
+
   - name: copy bin
     synchronize:
       src: files/bin/
